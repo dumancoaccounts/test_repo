@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Northstar Goods</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <nav class="topbar">
+        <a class="brand" href="#top">
+          <span class="brand-mark">N</span>
+          <span>Northstar Goods</span>
+        </a>
+        <div class="nav-links">
+          <a href="#collection">Collection</a>
+          <a href="#story">Story</a>
+          <a href="#journal">Journal</a>
+        </div>
+        <button class="cart-pill" type="button" aria-label="Cart items">
+          Cart
+          <span id="cart-count">0</span>
+        </button>
+      </nav>
+
+      <section class="hero-grid" id="top">
+        <div class="hero-copy">
+          <p class="eyebrow">Field-tested essentials for city weekends</p>
+          <h1>Functional gear with a calmer point of view.</h1>
+          <p class="hero-text">
+            Shop a tight edit of travel bags, outerwear, and everyday carry pieces
+            designed to move from subway rush to coastal reset.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#collection">Shop the drop</a>
+            <a class="button secondary" href="#story">Why Northstar</a>
+          </div>
+          <ul class="hero-metrics" aria-label="Store metrics">
+            <li>
+              <strong>48h</strong>
+              <span>dispatch on all ready-to-ship orders</span>
+            </li>
+            <li>
+              <strong>4.9/5</strong>
+              <span>average rating from repeat customers</span>
+            </li>
+            <li>
+              <strong>12k</strong>
+              <span>members in the early-access list</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="hero-showcase" aria-hidden="true">
+          <article class="showcase-card highlight-card">
+            <p>Drop 04</p>
+            <h2>Canvas Transit Pack</h2>
+            <span>Weather-sealed zips, 20L storage, laptop sleeve</span>
+          </article>
+          <article class="showcase-card accent-card">
+            <p>Best seller</p>
+            <h2>Shoreline Shell</h2>
+            <span>Storm cuff finish with lightweight thermal lining</span>
+          </article>
+          <div class="orb orb-one"></div>
+          <div class="orb orb-two"></div>
+        </div>
+      </section>
+    </header>
+
+    <main>
+      <section class="section collection" id="collection">
+        <div class="section-heading">
+          <p class="eyebrow">Featured collection</p>
+          <h2>Built for motion, edited for simplicity.</h2>
+          <p>
+            Four core pieces, one quiet palette, and enough utility to carry a full weekend.
+          </p>
+        </div>
+
+        <div class="product-grid">
+          <article class="product-card">
+            <div class="product-art art-pack"></div>
+            <div class="product-copy">
+              <div>
+                <p class="product-tag">Transit</p>
+                <h3>Canvas Transit Pack</h3>
+              </div>
+              <p>Waxed cotton shell, padded laptop sleeve, modular bottle pocket.</p>
+              <div class="product-meta">
+                <span>$148</span>
+                <button class="add-to-cart" data-product="Canvas Transit Pack" type="button">Add to cart</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-art art-shell"></div>
+            <div class="product-copy">
+              <div>
+                <p class="product-tag">Outerwear</p>
+                <h3>Shoreline Shell</h3>
+              </div>
+              <p>Windproof ripstop layer with packable hood and sealed seams.</p>
+              <div class="product-meta">
+                <span>$182</span>
+                <button class="add-to-cart" data-product="Shoreline Shell" type="button">Add to cart</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-art art-duffel"></div>
+            <div class="product-copy">
+              <div>
+                <p class="product-tag">Travel</p>
+                <h3>Weekend Duffel</h3>
+              </div>
+              <p>Structured base, shoe compartment, and detachable shoulder strap.</p>
+              <div class="product-meta">
+                <span>$164</span>
+                <button class="add-to-cart" data-product="Weekend Duffel" type="button">Add to cart</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-art art-bottle"></div>
+            <div class="product-copy">
+              <div>
+                <p class="product-tag">Everyday carry</p>
+                <h3>Thermal Bottle</h3>
+              </div>
+              <p>Powder-coated steel with twist-lock cap and all-day insulation.</p>
+              <div class="product-meta">
+                <span>$38</span>
+                <button class="add-to-cart" data-product="Thermal Bottle" type="button">Add to cart</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section split-section" id="story">
+        <div class="story-panel">
+          <p class="eyebrow">Why it works</p>
+          <h2>Less clutter. Better materials. Clearer decisions.</h2>
+          <p>
+            Northstar trims the catalog to a compact seasonal system. That means tighter quality control,
+            fewer disposable trends, and combinations that actually work together.
+          </p>
+        </div>
+        <div class="feature-stack">
+          <article>
+            <h3>Material-first development</h3>
+            <p>We start with abrasion testing, waterproofing, and long-hold color before silhouette.</p>
+          </article>
+          <article>
+            <h3>Repair-friendly construction</h3>
+            <p>Replaceable pulls, reinforced stress seams, and accessible hardware across the line.</p>
+          </article>
+          <article>
+            <h3>Measured inventory</h3>
+            <p>Smaller drops reduce waste and keep the product cycle disciplined.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section quote-section" id="journal">
+        <div class="quote-card">
+          <p class="eyebrow">Customer note</p>
+          <blockquote>
+            “The pack looks clean enough for work, but still survives actual travel. That balance is rare.”
+          </blockquote>
+          <span>Selin A., repeat customer</span>
+        </div>
+        <form class="signup-card" id="signup-form">
+          <p class="eyebrow">Early access list</p>
+          <h2>Get first look at the next drop.</h2>
+          <label class="sr-only" for="email">Email address</label>
+          <input id="email" name="email" type="email" placeholder="Email address" required>
+          <button class="button primary" type="submit">Join the list</button>
+          <p class="form-message" id="form-message" aria-live="polite"></p>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
