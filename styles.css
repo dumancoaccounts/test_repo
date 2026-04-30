@@ -84,6 +84,22 @@ input {
   color: var(--muted);
 }
 
+.nav-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.language-select {
+  min-height: 2.95rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0 2.3rem 0 1rem;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+}
+
 .cart-pill {
   border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.5);
@@ -485,6 +501,7 @@ input {
 
   .topbar,
   .nav-links,
+  .nav-actions,
   .hero-actions,
   .hero-metrics,
   .product-meta {
