@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body data-theme="dune">
   <div class="page-shell">
     <header class="hero">
       <nav class="topbar">
@@ -22,6 +22,27 @@
           <a href="#story">Story</a>
           <a href="#journal">Journal</a>
         </div>
+        <section class="theme-selector theme-selector-header" aria-labelledby="theme-selector-heading">
+          <p class="sr-only" id="theme-selector-heading">Choose the storefront theme</p>
+          <div class="theme-options" role="radiogroup" aria-label="Theme options">
+            <button class="theme-option is-active" type="button" data-theme-option="dune" role="radio" aria-checked="true">
+              <span class="theme-swatch swatch-dune" aria-hidden="true"></span>
+              <span>Dune</span>
+            </button>
+            <button class="theme-option" type="button" data-theme-option="nightfall" role="radio" aria-checked="false">
+              <span class="theme-swatch swatch-nightfall" aria-hidden="true"></span>
+              <span>Nightfall</span>
+            </button>
+            <button class="theme-option" type="button" data-theme-option="harbor" role="radio" aria-checked="false">
+              <span class="theme-swatch swatch-harbor" aria-hidden="true"></span>
+              <span>Harbor</span>
+            </button>
+            <button class="theme-option" type="button" data-theme-option="grove" role="radio" aria-checked="false">
+              <span class="theme-swatch swatch-grove" aria-hidden="true"></span>
+              <span>Grove</span>
+            </button>
+          </div>
+        </section>
         <button class="cart-pill" type="button" aria-label="Cart items">
           Cart
           <span id="cart-count">0</span>
