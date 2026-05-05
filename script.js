@@ -7,12 +7,13 @@ const languageSelect = document.querySelector("#language-select");
 
 const themeStorageKey = "northstar-theme";
 const defaultTheme = "dune";
-const availableThemes = new Set(["dune", "nightfall", "harbor", "grove"]);
+const availableThemes = new Set(["dune", "nightfall", "harbor", "grove", "solstice"]);
 const themeDisplayMeta = {
   dune: { label: "Dune", swatch: "🟠" },
   nightfall: { label: "Nightfall", swatch: "🔵" },
   harbor: { label: "Harbor", swatch: "🟦" },
-  grove: { label: "Grove", swatch: "🟢" }
+  grove: { label: "Grove", swatch: "🟢" },
+  solstice: { label: "Solstice", swatch: "🌅" }
 };
 
 let cartItems = 0;
