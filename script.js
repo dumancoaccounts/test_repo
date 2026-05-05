@@ -2,7 +2,7 @@ const cartCount = document.querySelector("#cart-count");
 const message = document.querySelector("#form-message");
 const signupForm = document.querySelector("#signup-form");
 const addToCartButtons = document.querySelectorAll(".add-to-cart");
-const themeButtons = document.querySelectorAll("[data-theme-option]");
+const themeSelect = document.querySelector("#theme-select");
 const languageSelect = document.querySelector("#language-select");
 
 const themeStorageKey = "northstar-theme";
@@ -206,10 +206,8 @@ function applyLanguage(language) {
 const applyTheme = (themeName) => {
   document.body.dataset.theme = themeName;
 
-  for (const button of themeButtons) {
-    const isActive = button.dataset.themeOption === themeName;
-    button.classList.toggle("is-active", isActive);
-    button.setAttribute("aria-checked", String(isActive));
+  if (themeSelect.value !== themeName) {
+    themeSelect.value = themeName;
   }
 };
 
@@ -227,18 +225,17 @@ for (const button of addToCartButtons) {
   });
 }
 
-for (const button of themeButtons) {
-  button.addEventListener("click", () => {
-    const { themeOption } = button.dataset;
+themeSelect.addEventListener("change", (event) => {
+  const selectedTheme = event.target.value;
 
-    if (!availableThemes.has(themeOption)) {
-      return;
-    }
+  if (!availableThemes.has(selectedTheme)) {
+    return;
+  }
 
-    applyTheme(themeOption);
-    localStorage.setItem(themeStorageKey, themeOption);
-  });
-}
+  applyTheme(selectedTheme);
+  localStorage.setItem(themeStorageKey, selectedTheme);
+});
+
 
 languageSelect.addEventListener("change", (event) => {
   applyLanguage(event.target.value);

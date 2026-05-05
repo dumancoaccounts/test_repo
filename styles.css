@@ -262,12 +262,6 @@ input {
   margin-bottom: 1.5rem;
 }
 
-.theme-options {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0.75rem;
-}
-
 .theme-selector-header {
   margin: 0;
   padding: 0.45rem;
@@ -275,65 +269,15 @@ input {
   background: rgba(255, 255, 255, 0.38);
 }
 
-.theme-selector-header .theme-options {
-  grid-template-columns: repeat(4, auto);
-  gap: 0.45rem;
-}
-
-.theme-option {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  width: 100%;
-  padding: 0.8rem 0.95rem;
-  border-radius: 1rem;
+.theme-select {
+  min-height: 2.35rem;
+  min-width: 10rem;
   border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.36);
+  border-radius: 999px;
+  padding: 0 2.2rem 0 0.9rem;
   color: var(--ink);
+  background: rgba(255, 255, 255, 0.5);
   cursor: pointer;
-  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
-}
-
-.theme-selector-header .theme-option {
-  padding: 0.55rem 0.8rem;
-  border-radius: 999px;
-  white-space: nowrap;
-}
-
-.theme-option:hover,
-.theme-option:focus-visible {
-  transform: translateY(-1px);
-  border-color: var(--accent);
-}
-
-.theme-option.is-active {
-  background: var(--surface-strong);
-  border-color: var(--accent);
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 25%, transparent);
-}
-
-.theme-swatch {
-  width: 1rem;
-  height: 1rem;
-  border-radius: 999px;
-  flex: none;
-  border: 1px solid rgba(255, 255, 255, 0.45);
-}
-
-.swatch-dune {
-  background: linear-gradient(135deg, #f0dfc6, #d66a3d);
-}
-
-.swatch-nightfall {
-  background: linear-gradient(135deg, #182231, #4f89ff);
-}
-
-.swatch-harbor {
-  background: linear-gradient(135deg, #dceef0, #2f9da8);
-}
-
-.swatch-grove {
-  background: linear-gradient(135deg, #e5ebd2, #8ba447);
 }
 
 .button,
@@ -635,9 +579,6 @@ input {
     grid-template-columns: 1fr;
   }
 
-  .theme-selector-header .theme-options {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
 
   .hero-showcase {
     min-height: 24rem;
@@ -675,12 +616,9 @@ input {
     border-radius: 1.2rem;
   }
 
-  .theme-selector-header .theme-options {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
 
-  .theme-option {
-    justify-content: flex-start;
+  .theme-select {
+    width: 100%;
   }
 
   .hero-metrics {
