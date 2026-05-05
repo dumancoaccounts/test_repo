@@ -30,8 +30,18 @@
             <option value="fr">Français</option>
           </select>
           <button class="cart-pill" type="button" aria-label="Cart items" data-i18n-aria-label="nav.cartAria">
-            <span data-i18n="nav.cart">Cart</span>
-            <span id="cart-count">0</span>
+            <span class="cart-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" role="presentation">
+                <path d="M8 7V6a4 4 0 1 1 8 0v1h2.75a1 1 0 0 1 .99 1.141l-1.2 8A2 2 0 0 1 16.56 18H7.44a2 2 0 0 1-1.98-1.859l-1.2-8A1 1 0 0 1 5.25 7H8Zm2 0h4V6a2 2 0 1 0-4 0v1Z"></path>
+              </svg>
+            </span>
+            <span class="cart-copy">
+              <span class="cart-label-row">
+                <span class="cart-label" data-i18n="nav.cart">Cart</span>
+                <span class="cart-count-badge" id="cart-count">0</span>
+              </span>
+              <span class="cart-meta" id="cart-meta">No items yet</span>
+            </span>
           </button>
         </div>
         <section class="theme-selector theme-selector-header" aria-labelledby="theme-selector-heading">

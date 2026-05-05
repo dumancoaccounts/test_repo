@@ -1,4 +1,5 @@
 const cartCount = document.querySelector("#cart-count");
+const cartMeta = document.querySelector("#cart-meta");
 const message = document.querySelector("#form-message");
 const signupForm = document.querySelector("#signup-form");
 const addToCartButtons = document.querySelectorAll(".add-to-cart");
@@ -24,6 +25,9 @@ const translations = {
     "nav.languageLabel": "Language",
     "nav.cart": "Cart",
     "nav.cartAria": "Cart items",
+    "nav.cartStatusEmpty": "No items yet",
+    "nav.cartStatusSingle": "1 item ready",
+    "nav.cartStatusMultiple": "{count} items ready",
     "nav.collection": "Collection",
     "nav.story": "Story",
     "nav.journal": "Journal",
@@ -76,6 +80,9 @@ const translations = {
     "nav.languageLabel": "Dil",
     "nav.cart": "Sepet",
     "nav.cartAria": "Sepetteki ürünler",
+    "nav.cartStatusEmpty": "Henüz ürün yok",
+    "nav.cartStatusSingle": "1 ürün hazır",
+    "nav.cartStatusMultiple": "{count} ürün hazır",
     "nav.collection": "Koleksiyon",
     "nav.story": "Hikaye",
     "nav.journal": "Günlük",
@@ -128,6 +135,9 @@ const translations = {
     "nav.languageLabel": "Langue",
     "nav.cart": "Panier",
     "nav.cartAria": "Articles du panier",
+    "nav.cartStatusEmpty": "Aucun article",
+    "nav.cartStatusSingle": "1 article prêt",
+    "nav.cartStatusMultiple": "{count} articles prêts",
     "nav.collection": "Collection",
     "nav.story": "Histoire",
     "nav.journal": "Journal",
@@ -182,6 +192,18 @@ function t(key) {
   return translations[currentLanguage][key] || translations.en[key] || key;
 }
 
+function updateCartDisplay() {
+  cartCount.textContent = String(cartItems);
+
+  if (cartItems === 0) {
+    cartMeta.textContent = t("nav.cartStatusEmpty");
+    return;
+  }
+
+  const key = cartItems === 1 ? "nav.cartStatusSingle" : "nav.cartStatusMultiple";
+  cartMeta.textContent = t(key).replace("{count}", String(cartItems));
+}
+
 function applyLanguage(language) {
   currentLanguage = translations[language] ? language : "en";
   document.documentElement.lang = currentLanguage;
@@ -208,6 +230,8 @@ function applyLanguage(language) {
   if (languageSelect.value !== currentLanguage) {
     languageSelect.value = currentLanguage;
   }
+
+  updateCartDisplay();
 }
 
 const applyTheme = (themeName) => {
@@ -239,7 +263,7 @@ applyTheme(initialTheme);
 for (const button of addToCartButtons) {
   button.addEventListener("click", () => {
     cartItems += 1;
-    cartCount.textContent = String(cartItems);
+    updateCartDisplay();
     button.textContent = t("actions.added");
     button.disabled = true;
   });
