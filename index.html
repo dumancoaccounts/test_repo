@@ -36,24 +36,13 @@
         </div>
         <section class="theme-selector theme-selector-header" aria-labelledby="theme-selector-heading">
           <p class="sr-only" id="theme-selector-heading">Choose the storefront theme</p>
-          <div class="theme-options" role="radiogroup" aria-label="Theme options">
-            <button class="theme-option is-active" type="button" data-theme-option="dune" role="radio" aria-checked="true">
-              <span class="theme-swatch swatch-dune" aria-hidden="true"></span>
-              <span>Dune</span>
-            </button>
-            <button class="theme-option" type="button" data-theme-option="nightfall" role="radio" aria-checked="false">
-              <span class="theme-swatch swatch-nightfall" aria-hidden="true"></span>
-              <span>Nightfall</span>
-            </button>
-            <button class="theme-option" type="button" data-theme-option="harbor" role="radio" aria-checked="false">
-              <span class="theme-swatch swatch-harbor" aria-hidden="true"></span>
-              <span>Harbor</span>
-            </button>
-            <button class="theme-option" type="button" data-theme-option="grove" role="radio" aria-checked="false">
-              <span class="theme-swatch swatch-grove" aria-hidden="true"></span>
-              <span>Grove</span>
-            </button>
-          </div>
+          <label class="sr-only" for="theme-select">Theme</label>
+          <select class="theme-select" id="theme-select" aria-label="Theme options">
+            <option value="dune">Dune</option>
+            <option value="nightfall">Nightfall</option>
+            <option value="harbor">Harbor</option>
+            <option value="grove">Grove</option>
+          </select>
         </section>
       </nav>
 
