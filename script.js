@@ -1,5 +1,10 @@
 const cartCount = document.querySelector("#cart-count");
 const cartMeta = document.querySelector("#cart-meta");
+const cartToggle = document.querySelector("#cart-toggle");
+const cartSummary = document.querySelector("#cart-summary");
+const cartSummaryCount = document.querySelector("#cart-summary-count");
+const cartSummaryDetail = document.querySelector("#cart-summary-detail");
+const cartLastAction = document.querySelector("#cart-last-action");
 const message = document.querySelector("#form-message");
 const signupForm = document.querySelector("#signup-form");
 const addToCartButtons = document.querySelectorAll(".add-to-cart");
@@ -18,6 +23,8 @@ const themeDisplayMeta = {
 };
 
 let cartItems = 0;
+let lastCartProduct = "";
+let cartPanelOpen = false;
 let currentLanguage = "en";
 
 const translations = {
@@ -28,6 +35,14 @@ const translations = {
     "nav.cartStatusEmpty": "No items yet",
     "nav.cartStatusSingle": "1 item ready",
     "nav.cartStatusMultiple": "{count} items ready",
+    "nav.cartSummaryHeading": "Cart snapshot",
+    "nav.cartSummaryCountLabel": "Items",
+    "nav.cartSummaryActionLabel": "Latest action",
+    "nav.cartSummaryEmptyDetail": "Add a piece to see your running total.",
+    "nav.cartSummaryReadyDetail": "{count} item selected and ready for checkout.",
+    "nav.cartSummaryReadyDetailPlural": "{count} items selected and ready for checkout.",
+    "nav.cartActionEmpty": "Awaiting first pick",
+    "nav.cartActionAdded": "Added {product}",
     "nav.collection": "Collection",
     "nav.story": "Story",
     "nav.journal": "Journal",
@@ -83,6 +98,14 @@ const translations = {
     "nav.cartStatusEmpty": "Henüz ürün yok",
     "nav.cartStatusSingle": "1 ürün hazır",
     "nav.cartStatusMultiple": "{count} ürün hazır",
+    "nav.cartSummaryHeading": "Sepet özeti",
+    "nav.cartSummaryCountLabel": "Ürün",
+    "nav.cartSummaryActionLabel": "Son işlem",
+    "nav.cartSummaryEmptyDetail": "Ara toplamını görmek için bir parça ekle.",
+    "nav.cartSummaryReadyDetail": "{count} ürün seçildi ve ödeme için hazır.",
+    "nav.cartSummaryReadyDetailPlural": "{count} ürün seçildi ve ödeme için hazır.",
+    "nav.cartActionEmpty": "İlk seçim bekleniyor",
+    "nav.cartActionAdded": "{product} sepete eklendi",
     "nav.collection": "Koleksiyon",
     "nav.story": "Hikaye",
     "nav.journal": "Günlük",
@@ -138,6 +161,14 @@ const translations = {
     "nav.cartStatusEmpty": "Aucun article",
     "nav.cartStatusSingle": "1 article prêt",
     "nav.cartStatusMultiple": "{count} articles prêts",
+    "nav.cartSummaryHeading": "Aperçu du panier",
+    "nav.cartSummaryCountLabel": "Articles",
+    "nav.cartSummaryActionLabel": "Dernière action",
+    "nav.cartSummaryEmptyDetail": "Ajoutez une pièce pour voir votre total en direct.",
+    "nav.cartSummaryReadyDetail": "{count} article sélectionné, prêt au paiement.",
+    "nav.cartSummaryReadyDetailPlural": "{count} articles sélectionnés, prêts au paiement.",
+    "nav.cartActionEmpty": "En attente du premier choix",
+    "nav.cartActionAdded": "{product} ajouté",
     "nav.collection": "Collection",
     "nav.story": "Histoire",
     "nav.journal": "Journal",
@@ -192,16 +223,28 @@ function t(key) {
   return translations[currentLanguage][key] || translations.en[key] || key;
 }
 
+function setCartPanelState(isOpen) {
+  cartPanelOpen = isOpen;
+  cartToggle.setAttribute("aria-expanded", String(isOpen));
+  cartSummary.hidden = !isOpen;
+}
+
 function updateCartDisplay() {
   cartCount.textContent = String(cartItems);
+  cartSummaryCount.textContent = String(cartItems);
 
   if (cartItems === 0) {
     cartMeta.textContent = t("nav.cartStatusEmpty");
+    cartSummaryDetail.textContent = t("nav.cartSummaryEmptyDetail");
+    cartLastAction.textContent = t("nav.cartActionEmpty");
     return;
   }
 
   const key = cartItems === 1 ? "nav.cartStatusSingle" : "nav.cartStatusMultiple";
+  const detailKey = cartItems === 1 ? "nav.cartSummaryReadyDetail" : "nav.cartSummaryReadyDetailPlural";
   cartMeta.textContent = t(key).replace("{count}", String(cartItems));
+  cartSummaryDetail.textContent = t(detailKey).replace("{count}", String(cartItems));
+  cartLastAction.textContent = t("nav.cartActionAdded").replace("{product}", lastCartProduct);
 }
 
 function applyLanguage(language) {
@@ -259,15 +302,33 @@ const initialTheme = availableThemes.has(storedTheme) ? storedTheme : defaultThe
 
 hydrateThemeSelectLabels();
 applyTheme(initialTheme);
+setCartPanelState(false);
 
 for (const button of addToCartButtons) {
-  button.addEventListener("click", () => {
+  button.addEventListener("click", (event) => {
+    event.stopPropagation();
     cartItems += 1;
+    lastCartProduct = button.dataset.product || "";
     updateCartDisplay();
+    setCartPanelState(true);
     button.textContent = t("actions.added");
     button.disabled = true;
   });
 }
+
+cartToggle.addEventListener("click", () => {
+  setCartPanelState(!cartPanelOpen);
+});
+
+document.addEventListener("click", (event) => {
+  if (!cartPanelOpen) {
+    return;
+  }
+
+  if (event.target instanceof Node && !cartSummary.contains(event.target) && !cartToggle.contains(event.target)) {
+    setCartPanelState(false);
+  }
+});
 
 themeSelect.addEventListener("change", (event) => {
   const selectedTheme = event.target.value;

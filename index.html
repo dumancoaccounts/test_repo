@@ -29,20 +29,47 @@
             <option value="tr">Türkçe</option>
             <option value="fr">Français</option>
           </select>
-          <button class="cart-pill" type="button" aria-label="Cart items" data-i18n-aria-label="nav.cartAria">
-            <span class="cart-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" role="presentation">
-                <path d="M8 7V6a4 4 0 1 1 8 0v1h2.75a1 1 0 0 1 .99 1.141l-1.2 8A2 2 0 0 1 16.56 18H7.44a2 2 0 0 1-1.98-1.859l-1.2-8A1 1 0 0 1 5.25 7H8Zm2 0h4V6a2 2 0 1 0-4 0v1Z"></path>
-              </svg>
-            </span>
-            <span class="cart-copy">
-              <span class="cart-label-row">
-                <span class="cart-label" data-i18n="nav.cart">Cart</span>
-                <span class="cart-count-badge" id="cart-count">0</span>
+          <div class="cart-module">
+            <button
+              class="cart-pill"
+              id="cart-toggle"
+              type="button"
+              aria-label="Cart items"
+              aria-controls="cart-summary"
+              aria-expanded="false"
+              data-i18n-aria-label="nav.cartAria"
+            >
+              <span class="cart-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" role="presentation">
+                  <path d="M8 7V6a4 4 0 1 1 8 0v1h2.75a1 1 0 0 1 .99 1.141l-1.2 8A2 2 0 0 1 16.56 18H7.44a2 2 0 0 1-1.98-1.859l-1.2-8A1 1 0 0 1 5.25 7H8Zm2 0h4V6a2 2 0 1 0-4 0v1Z"></path>
+                </svg>
               </span>
-              <span class="cart-meta" id="cart-meta">No items yet</span>
-            </span>
-          </button>
+              <span class="cart-copy">
+                <span class="cart-label-row">
+                  <span class="cart-label" data-i18n="nav.cart">Cart</span>
+                  <span class="cart-count-badge" id="cart-count">0</span>
+                </span>
+                <span class="cart-meta" id="cart-meta">No items yet</span>
+              </span>
+              <span class="cart-expand-indicator" aria-hidden="true">
+                <svg viewBox="0 0 20 20" role="presentation">
+                  <path d="M5.25 7.75 10 12.5l4.75-4.75" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+                </svg>
+              </span>
+            </button>
+            <div class="cart-summary" id="cart-summary" aria-live="polite" hidden>
+              <p class="cart-summary-heading" data-i18n="nav.cartSummaryHeading">Cart snapshot</p>
+              <div class="cart-summary-row">
+                <span data-i18n="nav.cartSummaryCountLabel">Items</span>
+                <strong id="cart-summary-count">0</strong>
+              </div>
+              <p class="cart-summary-detail" id="cart-summary-detail">Add a piece to see your running total.</p>
+              <div class="cart-summary-row cart-summary-row-accent">
+                <span data-i18n="nav.cartSummaryActionLabel">Latest action</span>
+                <strong id="cart-last-action">Awaiting first pick</strong>
+              </div>
+            </div>
+          </div>
         </div>
         <section class="theme-selector theme-selector-header" aria-labelledby="theme-selector-heading">
           <p class="sr-only" id="theme-selector-heading">Choose the storefront theme</p>
