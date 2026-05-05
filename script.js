@@ -9,10 +9,10 @@ const themeStorageKey = "northstar-theme";
 const defaultTheme = "dune";
 const availableThemes = new Set(["dune", "nightfall", "harbor", "grove"]);
 const themeDisplayMeta = {
-  dune: { label: "Dune", color: "#D66A3D" },
-  nightfall: { label: "Nightfall", color: "#7CC8FF" },
-  harbor: { label: "Harbor", color: "#2F9DA8" },
-  grove: { label: "Grove", color: "#8BA447" }
+  dune: { label: "Dune", swatch: "🟠" },
+  nightfall: { label: "Nightfall", swatch: "🔵" },
+  harbor: { label: "Harbor", swatch: "🟦" },
+  grove: { label: "Grove", swatch: "🟢" }
 };
 
 let cartItems = 0;
@@ -225,7 +225,7 @@ function hydrateThemeSelectLabels() {
       continue;
     }
 
-    option.textContent = `${themeMeta.label} • ${themeMeta.color}`;
+    option.textContent = `${themeMeta.swatch} ${themeMeta.label}`;
   }
 }
 
