@@ -8,6 +8,12 @@ const languageSelect = document.querySelector("#language-select");
 const themeStorageKey = "northstar-theme";
 const defaultTheme = "dune";
 const availableThemes = new Set(["dune", "nightfall", "harbor", "grove"]);
+const themeDisplayMeta = {
+  dune: { label: "Dune", color: "#D66A3D" },
+  nightfall: { label: "Nightfall", color: "#7CC8FF" },
+  harbor: { label: "Harbor", color: "#2F9DA8" },
+  grove: { label: "Grove", color: "#8BA447" }
+};
 
 let cartItems = 0;
 let currentLanguage = "en";
@@ -211,9 +217,22 @@ const applyTheme = (themeName) => {
   }
 };
 
+function hydrateThemeSelectLabels() {
+  for (const option of themeSelect.options) {
+    const themeMeta = themeDisplayMeta[option.value];
+
+    if (!themeMeta) {
+      continue;
+    }
+
+    option.textContent = `${themeMeta.label} • ${themeMeta.color}`;
+  }
+}
+
 const storedTheme = localStorage.getItem(themeStorageKey);
 const initialTheme = availableThemes.has(storedTheme) ? storedTheme : defaultTheme;
 
+hydrateThemeSelectLabels();
 applyTheme(initialTheme);
 
 for (const button of addToCartButtons) {
